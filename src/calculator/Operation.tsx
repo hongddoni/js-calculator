@@ -1,15 +1,19 @@
-import {operationType} from "./enum/operationType.ts";
+import {OperationType} from "./type/enum/operationType.ts";
 import useCalculatorContext from "./hooks/useCalculatorContext.ts";
 
 const Operation = () => {
-    const {onChangeOperation} = useCalculatorContext();
+    const {onClickOperation} = useCalculatorContext();
 
     return <div className="operations subgrid">
-        <button className="operation" onClick={()=>onChangeOperation?.(operationType.DIVISION)}>/</button>
-        <button className="operation" onClick={()=>onChangeOperation?.(operationType.MULTIPLICATION)}>X</button>
-        <button className="operation" onClick={()=>onChangeOperation?.(operationType.SUBTRACTION)}>-</button>
-        <button className="operation" onClick={()=>onChangeOperation?.(operationType.ADDITION)}>+</button>
-        <button className="operation" onClick={()=>onChangeOperation?.(operationType.RESULT)}>=</button>
+        {
+            Object.values(OperationType).map(value => {
+                return (
+                    <button className="operation" key={value} onClick={() => onClickOperation?.(value)}>
+                        {value}
+                    </button>
+                )
+            })
+        }
     </div>
 }
 

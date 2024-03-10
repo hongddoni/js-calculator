@@ -1,12 +1,19 @@
 import {createContext} from "react";
+import {OperationType} from "../type/enum/operationType.ts";
+import {DisplayInterface} from "../type/interface/displayInterface.ts";
 
 export interface calculatorContext {
-    firstNumber?: number;
-    secondNumber?: number;
-    total: string;
+    display: DisplayInterface,
 
-    onChangeFirstNumber?: (num: number) => void;
-    onChangeSecondNumber?: (num: number) => void;
+    onClickOperation?: (operation: OperationType) => void;
+    onClickAllClear?: () => void;
+    onClickDigit?: (digit: string) => void;
 }
 
-export const CalculatorContext = createContext<calculatorContext>({total: '0'});
+export const CalculatorContext = createContext<calculatorContext>({
+    display: {
+        prev: '',
+        after: '',
+        operation: OperationType.RESULT
+    }
+});

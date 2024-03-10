@@ -1,8 +1,0 @@
-export enum operationType {
-    ADDITION='ADDITION',
-    SUBTRACTION = 'SUBTRACTION',
-    MULTIPLICATION = 'MULTIPLICATION',
-    DIVISION = 'DIVISION',
-    RESULT = 'RESULT',
-    INIT = 'INIT'
-}
